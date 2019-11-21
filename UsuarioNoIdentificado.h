@@ -6,7 +6,6 @@ using namespace std;
 
 class UsuarioNoIdentificado {
 	public: 
-		inline UsuarioNoIdentificado() {}
 		virtual void menu()=0;
 		virtual void mostrar()=0;
 };
@@ -48,8 +47,8 @@ public:
 	inline void setContraseña(string c) { this->contraseña = c; }
 
 	//Funciones heredadas
-	void mostrar();
-	void menu();
+	virtual void mostrar();
+	virtual void menu();
 
 	//Funciones propias
 	void modificarDatosPersonales(); 
