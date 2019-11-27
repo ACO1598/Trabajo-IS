@@ -1,11 +1,12 @@
-/*
- * Videojuego.cpp
- *
- *  Created on: 20 nov. 2019
- *      Author: Alan
- */
-
-#include "Videojuego.h"
+#include<iostream>
+#include"UsuarioNoIdentificado.h"
+#include"Videojuego.h"
+#include"Master.h"
+#include"Usuario.h"
+#include"Administrador.h"
+using namespace std;
+#include<iostream>
+using namespace std;
 
 Videojuego::Videojuego() {
 	// TODO Auto-generated constructor stub
@@ -72,15 +73,15 @@ Videojuego::~Videojuego() {
 	// TODO Auto-generated destructor stub
 }
 
-Videojuego::comprobarID(){
+string Videojuego::comprobarID() {
 
 }
 
-Videojuego::mostrar(){
-	cout<<"Nombre: "<<this->getNombre()<<endl;
-	cout<<"Plataforma: "<<this->getPlataforma()<<endl;
-	cout<<"Genero: "<<this->getGenero()<<endl;
-	cout<<"Año de lanzamiento: "<<this->getAnioLanzamiento()<<endl;
-	cout<<"Precio: "<<this->getPrecio()<<endl;
-	cout<<"Descripción: "<<this->getDescripcion()<<endl;
+void Videojuego::mostrar() {
+	cout << "Nombre: " << this->getNombre() << endl;
+	cout << "Plataforma: " << this->getPlataforma() << endl;
+	cout << "Genero: " << this->getGenero() << endl;
+	cout << "Año de lanzamiento: " << this->getAnioLanzamiento() << endl;
+	cout << "Precio: " << this->getPrecio() << endl;
+	cout << "Descripción: " << this->getDescripcion() << endl;
 }

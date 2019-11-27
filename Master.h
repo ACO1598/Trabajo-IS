@@ -1,26 +1,35 @@
-/*
- * Master.h
- *
- *  Created on: 20 nov. 2019
- *      Author: Alan
- */
-
-#include "Videojuego.h"
-#include <iostream>
-using namespace std;
-#include <list>
-
 #ifndef MASTER_H_
 #define MASTER_H_
+
+#include<iostream>
+#include"UsuarioNoIdentificado.h"
+#include"Videojuego.h"
+#include"Usuario.h"
+#include"Administrador.h"
+using namespace std;
+#include <list>
 
 class Master {
 private:
 	list<Videojuego> lista_Videojuegos;
+	list<Usuario> lista_Usuarios;
+	list<Administrador> lista_Adminnistradores;
+	Usuario* u;
+	Administrador* a;
 public:
-	Master();
+	inline Master() { this->u = NULL; this->a = NULL; }
+	inline Master(Usuario* usu) { this->u = usu; }
 	virtual ~Master();
-	const list<Videojuego>& getListaVideojuegos() const;
+	Usuario* getUsuario();
+	list<Videojuego> getListaVideojuegos();
+	list<Usuario> getListaUsuario();              //Quito los const por ahora
+	list<Administrador> getListaAdministrador();
 	void setListaVideojuegos(const list<Videojuego>& listaVideojuegos);
+	void setUsuario(const Usuario* us);
+	void setUsuario(const Usuario* us);
+
+	void setListaUsuarios(const list<Usuario>& lu);
+	void setListaAdministradores(const list<Administrador>& la);
 
 	void primerInicio();
 	void reescribirBackup();

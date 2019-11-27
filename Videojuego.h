@@ -1,15 +1,13 @@
-/*
- * Videojuego.h
- *
- *  Created on: 20 nov. 2019
- *      Author: Alan
- */
-
 #ifndef VIDEOJUEGO_H_
 #define VIDEOJUEGO_H_
 
-#include <iostream>
+#include<iostream>
+#include"UsuarioNoIdentificado.h"
+#include"Master.h"
+#include"Usuario.h"
+#include"Administrador.h"
 using namespace std;
+
 
 class Videojuego {
 private:
