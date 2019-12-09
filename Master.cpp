@@ -7,11 +7,11 @@
 #include<list>
 using namespace std;
 
-
-
-Usuario* Master::getUsuario() {
-	return this->u;
-}
+//
+//
+//Usuario* Master::getUsuario() {
+//	return this->u;
+//}
 
 
 list<Videojuego> Master::getListaVideojuegos() {
@@ -35,9 +35,9 @@ void Master::setListaUsuarios(const list<Usuario>& lu) {
 void Master::setListaAdministradores(const list<Administrador>& la) {
 	lista_Adminnistradores = la;
 }
-void setUsuario(const Usuario* us) {
-
-}
+//void setUsuario(const Usuario* us) {
+//
+//}
 
 
 

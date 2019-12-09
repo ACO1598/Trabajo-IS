@@ -2,10 +2,7 @@
 #define VIDEOJUEGO_H_
 
 #include<iostream>
-#include"UsuarioNoIdentificado.h"
 #include"Master.h"
-#include"Usuario.h"
-#include"Administrador.h"
 using namespace std;
 
 

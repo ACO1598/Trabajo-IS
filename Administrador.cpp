@@ -1,5 +1,4 @@
 #include<iostream>
-#include"UsuarioNoIdentificado.h"
 #include"Videojuego.h"
 #include"Master.h"
 #include"Usuario.h"
@@ -108,12 +107,12 @@ void Administrador::mostrar() {
 	cout << "Telefono: " << getTelefono() << endl;
 	cout << "E-mail: " << getEmail() << endl;
 	cout << "Dirección: " << getDireccion() << endl;
-	cout << "Contraseña: " << getContraseña() << endl;
+	cout << "Contraseña: " << getContrasena() << endl;
 }
 
 //Deberan indicar primero que videojuego añadir para ello creamos un videojuego con el constructor.
 void Administrador::añadirVideojuego(Master m) {
-	string id, plataforma,genero, nombre, descripcion;
+	string id, plataforma,genero, nombre, descripcion, null;
 	int anio_lanzamiento;
 	float precio;
 	cout << "Escriba aqui el nombre del videojuego: " << endl;
@@ -130,8 +129,8 @@ void Administrador::añadirVideojuego(Master m) {
 	cin >> precio;
 
 	Videojuego v(nombre, plataforma, genero, descripcion, anio_lanzamiento, precio);
-	string id=v.generarIdVideojuego(m);
-	string null = "-1";
+	id=v.generarIdVideojuego(m);
+	null = "-1";
 	if (id != null) {
 		v.setId(id);
 		list<Videojuego> videojuegos = m.getListaVideojuegos();

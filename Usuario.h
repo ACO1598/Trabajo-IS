@@ -17,21 +17,21 @@ private:
 	int telefono;
 	string email;
 	string direccion;
-	string contraseña;
+	string contrasena;
 public:
 	//Constructor
 	inline Usuario(int id, int f, int t, string n, string a, string e, string d, string c) {
 		this->ID = id; this->fecha_nac = f; this->telefono = t;
-		this->nombre = n; this->apellidos = a; this->email = e; this->direccion = d; this->contraseña = c;
+		this->nombre = n; this->apellidos = a; this->email = e; this->direccion = d; this->contrasena = c;
 	}
 	inline Usuario(Usuario& u) { *this = u; }
-	inline Usuario() { this->nombre = "0"; this->apellidos = "0"; this->email = "0"; this->direccion = "0"; this->contraseña = "0"; this->fecha_nac = 0; this->telefono = 0; this->ID = 0;};
+	inline Usuario() { this->nombre = "0"; this->apellidos = "0"; this->email = "0"; this->direccion = "0"; this->contrasena = "0"; this->fecha_nac = 0; this->telefono = 0; this->ID = 0;};
 	//Observadores
 	inline string getNombre() const { return this->nombre; }
 	inline string getApellidos() const { return this->apellidos; }
 	inline string getEmail() const { return this->email; }
 	inline string getDireccion() const { return this->direccion; }
-	inline string getContraseña() const { return this->contraseña; }
+	inline string getContrasena() const { return this->contrasena; }
 	inline int getID() const { return this->ID; }
 	inline int getFecha_nac() const { return this->fecha_nac; }
 	inline int getTelefono() const { return this->telefono; }
@@ -43,7 +43,7 @@ public:
 	inline void setApellidos(string a) { this->apellidos = a; }
 	inline void setEmail(string e) { this->email = e; }
 	inline void setDireccion(string d) { this->direccion = d; }
-	inline void setContraseña(string c) { this->contraseña = c; }
+	inline void setContrasena(string c) { this->contrasena = c; }
 	//Sobrecarga
 	Usuario& operator =(Usuario const& u);
 

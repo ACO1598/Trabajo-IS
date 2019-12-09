@@ -10,7 +10,7 @@ using namespace std;
 Usuario& Usuario::operator =(Usuario const& u) {
 	setApellidos(u.getApellidos());
 	setNombre(u.getNombre());
-	setContraseña(u.getContraseña());
+	setContrasena(u.getContrasena());
 	setDireccion(u.getDireccion());
 	setEmail(u.getEmail());
 	setFecha_nac(u.getFecha_nac());
@@ -28,7 +28,7 @@ void Usuario::mostrar() {
 	cout << "Telefono: " << getTelefono() << endl;
 	cout << "E-mail: " << getEmail() << endl;
 	cout << "Dirección: " << getDireccion() << endl;
-	cout << "Contraseña: " << getContraseña() << endl;
+	cout << "Contraseña: " << getContrasena() << endl;
 }
 
 bool Usuario::comprobarID(int id,Master m) {
@@ -72,7 +72,7 @@ void Usuario::modificarDatosPersonales(Master m) {
 	setFecha_nac(f);
 	cout << "Telefono:" << endl;
 	cin >> t;
-	setTelefono(t);
+	 setTelefono(t);
 	cout << "E-mail:" << endl;
 	cin >> e;
 	setEmail(e);
@@ -81,7 +81,7 @@ void Usuario::modificarDatosPersonales(Master m) {
 	setDireccion(d);
 	cout << "Contraseña:" << endl;
 	cin >> c;
-	setContraseña(c);
+	setContrasena(c);
 }
 
 Videojuego Usuario::buscarVideojuego(Master m) {

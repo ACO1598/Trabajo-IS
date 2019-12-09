@@ -1,10 +1,7 @@
 #ifndef _USUARIONOIDENTIFICADO_
 #define _USUARIONOIDENTIFICADO_
 #include<iostream>
-#include"Videojuego.h"
 #include"Master.h"
-#include"Usuario.h"
-#include"Administrador.h"
 using namespace std;
 
 
