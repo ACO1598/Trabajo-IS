@@ -18,7 +18,8 @@ Videojuego::Videojuego(string n, string p, string g, string d, int a, float pr){
 	this->genero = g;
 	this->descripcion = d;
 	this->anio_lanzamiento = a;
-	this->plataforma = pr;
+	this->plataforma = p;
+	this->precio = pr;
 }
 
 
