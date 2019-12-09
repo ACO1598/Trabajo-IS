@@ -8,6 +8,11 @@ using namespace std;
 
 int main() {
 	cout << "!!!Proyecto en desarrollo, por favor este atento a nuestras RRSS!!!" << endl; // prints !!!Hello World!!!
+	
+	Master master;
+	master.primerInicio();
+	master.menuInicio();
+
 	return 0;
 	/*  Asi es como llamariamos a funciones desde el suusario guarado en master cuando sea admin
 	Master m;
