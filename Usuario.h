@@ -2,8 +2,8 @@
 #define _USUARIO_H_
 #include<iostream>
 #include"UsuarioNoIdentificado.h"
-#include "Videojuego.h"
-#include "Master.h"
+#include"Videojuego.h"
+#include"Master.h"
 #include"Administrador.h"
 using namespace std;
 
@@ -25,6 +25,7 @@ public:
 		this->nombre = n; this->apellidos = a; this->email = e; this->direccion = d; this->contraseña = c;
 	}
 	inline Usuario(Usuario& u) { *this = u; }
+	inline Usuario() { this->nombre = "0"; this->apellidos = "0"; this->email = "0"; this->direccion = "0"; this->contraseña = "0"; this->fecha_nac = 0; this->telefono = 0; this->ID = 0;};
 	//Observadores
 	inline string getNombre() const { return this->nombre; }
 	inline string getApellidos() const { return this->apellidos; }
@@ -53,10 +54,10 @@ public:
 	//Funciones propias
 	void modificarDatosPersonales(Master m);
 	void darseDeBaja();
-	void mostrarListaDeVideojuegos();
-	void buscarVideojuego();
+	void mostrarListaDeVideojuegos(Master m);
 	void busquedaPorFiltrado();
-	bool comprobarID(int id, Master m);
+	bool comprobarID(int id,Master m);
+	Videojuego buscarVideojuego(Master m);
 
 
 };

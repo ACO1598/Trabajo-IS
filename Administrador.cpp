@@ -22,7 +22,7 @@ Usuario Administrador::buscarUsuario(Master m) {
 			Usuario uenc(*it);
 		}
 		else if (it == usuarios.end() && enc == false) {
-			cout << "Lo siento, este usuario no se encuentra en el sistema" << endl;
+			/*cout << "Lo siento, este usuario no se encuentra en el sistema" << endl;*/
 			Usuario uenc(0, 0, 0, "0", "0", "0", "0", "0");
 		}
 		it++;
@@ -48,9 +48,17 @@ void Administrador::darPrivilegiosAdmin(Master m) {
 	cout << "Busque el usuario al que desea hacer administrador" << endl;
 	Usuario enc = buscarUsuario(m);
 	if (enc.getID() != 0) {
-		m.getListaUsuario().erase(enc);
+		list<Usuario> usuarios = m.getListaUsuario();
+		list<Usuario>::iterator it = usuarios.begin();
+		bool band = false;
+		while (it != usuarios.end() && band==false) {
+			if ((*it).getID() == enc.getID()) {
+				usuarios.erase(it);
+				band = true;
+			}
+		}
 		cout << "Usuario eliminado" << endl;
-		Administrador nuevo(enc);                 //Administrador hecho con constructor de usuario
+		Administrador nuevo(enc);                 //Administrador hecho con constructor de usuario //ERRRRRRROR
 		m.getListaAdministrador.push_back(nuevo);
 		cout << "Nuevo administrador añadido" << endl;
 	}
@@ -58,7 +66,22 @@ void Administrador::darPrivilegiosAdmin(Master m) {
 
 void Administrador::eliminarUsuario(Master m) {
 	Usuario enc = buscarUsuario(m);
-	m.getListaUsuario().erase(enc);  //¿Que pasa si el usuario encontrado es un administrador o no se encuentra el usuario?
+	if (enc.getID() != 0) {
+		list<Usuario> usuarios = m.getListaUsuario();
+		list<Usuario>::iterator it = usuarios.begin();
+		bool band = false;
+		while (it != usuarios.end() && band == false) {
+			if ((*it).getID() == enc.getID()) {
+				usuarios.erase(it);
+				band = true;
+			}
+		}
+		cout << "Usuario eliminado" << endl;
+	}
+	else {
+		cout << "El usuario no se encuentra en el sistema, vuelva a intentarlo desde el menu" << endl;
+	}
+	//¿Que pasa si el usuario encontrado es un administrador o no se encuentra el usuario?
 }
 
 void Administrador::mostrarListaDeUsuarios(Master m) {
@@ -78,13 +101,62 @@ void Administrador::mostrarListaDeUsuarios(Master m) {
 }
 
 void Administrador::mostrar() {
-	cout << "\nDNI: " << this->getID() << endl;
-	cout << "Nombre: " << this->getNombre() << endl;
-	cout << "Apellidos: " << this->getApellidos() << endl;
-	cout << "Fecha de naciminento: " << this->getFecha_nac() << endl;
-	cout << "Telefono: " << this->getTelefono() << endl;
-	cout << "E-mail: " << this->getEmail() << endl;
-	cout << "Dirección: " << this->getDireccion() << endl;
-	cout << "Contraseña: " << this->getContraseña() << endl;
+	cout << "\nDNI: " << getID() << endl;
+	cout << "Nombre: " << getNombre() << endl;
+	cout << "Apellidos: " << getApellidos() << endl;
+	cout << "Fecha de naciminento: " << getFecha_nac() << endl;
+	cout << "Telefono: " << getTelefono() << endl;
+	cout << "E-mail: " << getEmail() << endl;
+	cout << "Dirección: " << getDireccion() << endl;
+	cout << "Contraseña: " << getContraseña() << endl;
 }
 
+//Deberan indicar primero que videojuego añadir para ello creamos un videojuego con el constructor.
+void Administrador::añadirVideojuego(Master m) {
+	string id, plataforma,genero, nombre, descripcion;
+	int anio_lanzamiento;
+	float precio;
+	cout << "Escriba aqui el nombre del videojuego: " << endl;
+	cin >> nombre;
+	cout << "Plataforma: " << endl;
+	cin >> plataforma;
+	cout << "Genero: " << endl;
+	cin >> genero;
+	cout << "Descripcion: " << endl;
+	cin >> descripcion;
+	cout << "Anio de lanzamiento: " << endl;
+	cin >> anio_lanzamiento;
+	cout << "Precio: " << endl;
+	cin >> precio;
+
+	Videojuego v(nombre, plataforma, genero, descripcion, anio_lanzamiento, precio);
+	string id=v.generarIdVideojuego(m);
+	string null = "-1";
+	if (id != null) {
+		v.setId(id);
+		list<Videojuego> videojuegos = m.getListaVideojuegos();
+		videojuegos.push_back(v);
+		m.setListaVideojuegos(videojuegos);
+	}
+	else {
+		cout << "El juego ya se encuentra en la base de datos" << endl;
+	}
+}
+void Administrador::eliminarVideojuego(Master m) {
+	Videojuego v=buscarVideojuego(m);
+	if (v.getId() == "-1") {
+		cout << "Si desea eliminar otro videojuego vuelva a esta opcion desde el menu" << endl;
+	}
+	else {
+		list<Videojuego> games = m.getListaVideojuegos();
+		list<Videojuego>::iterator it = games.begin();
+		bool enc = false;
+		while (it != games.end() && enc==false) {
+			if ((*it).getId() == v.getId()) {
+				games.erase(it);
+				enc = true;
+			}
+			it++;
+		}		
+	}
+}

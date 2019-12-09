@@ -1,6 +1,5 @@
 #ifndef _ADMINISTRADOR_H_
 #define _ADMINISTRADOR_H_
-
 #include<iostream>
 #include"Usuario.h"
 #include"UsuarioNoIdentificado.h"
@@ -14,12 +13,13 @@ public:
 	//Faltan constructores
 	inline Administrador(){}
 	inline Administrador(Administrador& a) { *this = a; }
+	inline Administrador(Usuario& u); //Crear un admin a partir de un usuario
 	//Funciones heredadas
 	void mostrar();
 	void menu(Master m);
 	//Funciones propias
 	Videojuego modificarVideojuego(Videojuego v);
-	void añadirVideojuego();
+	void añadirVideojuego(Master m);
 	void eliminarVideojuego(Master m);
 	void eliminarUsuario(Master m);
 	void mostrarListaDeUsuarios(Master m);

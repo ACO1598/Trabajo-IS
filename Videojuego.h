@@ -16,6 +16,7 @@ private:
 	float precio;
 public:
 	Videojuego();
+	Videojuego(string n, string p, string g, string d, int a, float pr);
 	virtual ~Videojuego();
 	int getAnioLanzamiento() const;
 	void setAnioLanzamiento(int anioLanzamiento);
@@ -32,8 +33,11 @@ public:
 	float getPrecio() const;
 	void setPrecio(float precio);
 
-	string comprobarID();
+	//Funciones propias
+	bool comprobarID(string id, Master m);
 	void mostrar();
+	void modificarVideojuego(Master m);
+	string generarIdVideojuego(Master m);
 };
 
 #endif /* VIDEOJUEGO_H_ */

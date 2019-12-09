@@ -4,6 +4,7 @@
 #include"Master.h"
 #include"Usuario.h"
 #include"Administrador.h"
+#include<list>
 using namespace std;
 
 
@@ -13,7 +14,7 @@ Usuario* Master::getUsuario() {
 }
 
 
-list<Videojuego> Master::getListaVideojuegos()  {
+list<Videojuego> Master::getListaVideojuegos() {
 	return this->lista_Videojuegos;
 }
 list<Usuario> Master::getListaUsuario() {
@@ -25,7 +26,7 @@ list<Administrador> Master::getListaAdministrador() {
 
 
 
-void Master::setListaVideojuegos(const list<Videojuego>& listaVideojuegos) {
+void Master::setListaVideojuegos(list<Videojuego> listaVideojuegos) {
 	lista_Videojuegos = listaVideojuegos;
 }
 void Master::setListaUsuarios(const list<Usuario>& lu) {

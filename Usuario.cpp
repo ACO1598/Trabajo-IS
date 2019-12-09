@@ -6,7 +6,7 @@
 using namespace std;
 
 
-
+//Sobrecarga de operadores
 Usuario& Usuario::operator =(Usuario const& u) {
 	setApellidos(u.getApellidos());
 	setNombre(u.getNombre());
@@ -19,6 +19,7 @@ Usuario& Usuario::operator =(Usuario const& u) {
 	return *this;
 }
 
+//FUnciones propias
 void Usuario::mostrar() {
 	cout << "\nDNI: " << getID() << endl;
 	cout << "Nombre: " << getNombre() << endl;
@@ -30,13 +31,13 @@ void Usuario::mostrar() {
 	cout << "Contraseña: " << getContraseña() << endl;
 }
 
-bool Usuario::comprobarID(int id, Master m) {
+bool Usuario::comprobarID(int id,Master m) {
 	list<Usuario> usuarios = m.getListaUsuario();
 	list<Usuario>::iterator it = usuarios.begin();
 	bool enc = false;
 	while (it != usuarios.end() && enc == false) {
 		if ((*it).getID() == id) {
-			enc == true;
+			enc = true;
 		}
 		it++;
 	}
@@ -83,6 +84,55 @@ void Usuario::modificarDatosPersonales(Master m) {
 	setContraseña(c);
 }
 
+Videojuego Usuario::buscarVideojuego(Master m) {
+	string nom, plat, nom2;
+	cout << "Introduzca el nombre del videojueo: " << endl;
+	cin >> nom;
+	cout << "Introduzca la plataforma del videojueo: " << endl;
+	cin >> plat;
+	string a = "_";
+	nom2 = nom.substr(0, 3);
+	string id = nom + a + plat;
+	list<Videojuego> videojuegos = m.getListaVideojuegos();
+	list<Videojuego>::iterator it = videojuegos.begin();
+	bool enc = false;
+	while (it != videojuegos.end() && enc == false) {
+		if ((*it).getId() == id) {
+			enc = true;
+			return *it;
+		}
+		it++;
+	}
+	if (enc == false) {
+		id = nom2 + a + plat;
+		bool enc1 = false;
+		list<Videojuego>::iterator it2 = videojuegos.begin();
+		while (it2 != videojuegos.end() && enc1 == false) {
+			if ((*it2).getId() == id) {
+				enc1 = true;
+				return *it2;
+			}
+			it++;
+		}
+		if (enc1 == false) {
+			cout << "Este videojuego no se encuentra en la base de datos en esta plataforma" << endl;
+			Videojuego null;
+			null.setId("-1");
+			return null;
+		}
+	}
+}
+
+void Usuario::mostrarListaDeVideojuegos(Master m) {
+	list<Videojuego> games = m.getListaVideojuegos();
+	list<Videojuego>::iterator it = games.begin();
+	cout << "---------LISTA DE VIDEOJUEGOS---------" << endl;
+	while (it != games.end()) {
+		cout << (*it).getNombre() << " - " << (*it).getPlataforma() << endl;
+		it++;
+	}
+}
+
 void Usuario::menu(Master m) {
 
 	cout << "-------------------------------- MENÚ --------------------------------" << endl;
@@ -95,12 +145,13 @@ void Usuario::menu(Master m) {
 	cout << "\nIntroduzca un numero con su eleccion" << endl;
 	cin >> eleccion;
 
-	switch (eleccion) {
+	switch (eleccion) {  //Error con *1
+
 	case 1: int elec;
 		cout << "\n\n1)Ver datos personales" << endl;
 		cout << "\n\n2)Modificar datos personales" << endl;
 		cout << "\n\n3)Volver atras" << endl;
-		cout << "\nIntroduzca un numero con su eleccion" << endl;
+		cout << "\nIntroduzca un numero con su eleccion: " << endl;
 		cin >> elec;
 		while (elec != 1 || elec != 2 || elec != 3) {
 			cout << "La opcion escogida no es valida, por favor vuelva a introducir un numero con su eleccion" << endl;
@@ -117,8 +168,21 @@ void Usuario::menu(Master m) {
 			menu(m);
 		}
 		break;
-	case 2:break;
-	case 3:break;
+	case 2:
+		mostrarListaDeVideojuegos(m);
+		menu(m);
+		break;
+	case 3:
+		Videojuego v=buscarVideojuego(m);  //*1 no puedo inicializar este Videojuego
+		if (v.getId() == "-1") { 
+			cout << "Para buscar otro juego, vuelva a intentarlo desde el menú" << endl;
+			menu(m);
+		}
+		else {
+			cout << "El videojuego contiene los siguientes campos: " << endl;
+			v.mostrar();
+		}
+		break;
 	case 4:break;
 	case 5:break;
 	default:

@@ -24,8 +24,7 @@ public:
 	list<Videojuego> getListaVideojuegos();
 	list<Usuario> getListaUsuario();              //Quito los const por ahora
 	list<Administrador> getListaAdministrador();
-	void setListaVideojuegos(const list<Videojuego>& listaVideojuegos);
-	void setUsuario(const Usuario* us);
+	void setListaVideojuegos(list<Videojuego> listaVideojuegos);
 	void setUsuario(const Usuario* us);
 
 	void setListaUsuarios(const list<Usuario>& lu);
