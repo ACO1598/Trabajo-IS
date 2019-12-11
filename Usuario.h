@@ -53,7 +53,7 @@ public:
 
 	//Funciones propias
 	void modificarDatosPersonales(Master m);
-	void darseDeBaja();
+	virtual void darseDeBaja(Master m); //Lo hago virtuyal para que admin lo redefina
 	void mostrarListaDeVideojuegos(Master m);
 	void busquedaPorFiltrado();
 	bool comprobarID(int id,Master m);

@@ -17,7 +17,7 @@ Administrador* Master::getAdministrador() {
 }
 
 
-list<Videojuego> Master::getListaVideojuegos()  {
+list<Videojuego> Master::getListaVideojuegos() {
 	return this->lista_Videojuegos;
 }
 list<Usuario> Master::getListaUsuario() {
@@ -46,7 +46,7 @@ Master::~Master() {
 //Esta funcion devuelve si el hecho de añadir un usuario a tenido exito o no
 bool Master::añadirUsuario() {
 	bool res;
-	string nombre, apellido, email, direccion, contraseña;
+	string nombre, apellido, email, direccion, contrasena;
 	int fecha_nac, telefono, DNI;
 
 	cout << "DNI: " << endl;
@@ -63,8 +63,8 @@ bool Master::añadirUsuario() {
 	cin >> telefono;
 	cout << "Dirección: " << endl;
 	cin >> direccion;
-	cout << "Contraseña: " << endl;
-	cin >> contraseña;
+	cout << "Contrasena: " << endl;
+	cin >> contrasena;
 
 	//Comprobamos que si el DNI ya existe
 	bool existe = false;
@@ -76,7 +76,7 @@ bool Master::añadirUsuario() {
 	}
 
 	if (existe == false) {
-		Usuario newUs(DNI, fecha_nac, telefono, nombre, apellido, email, direccion, contraseña);
+		Usuario newUs(DNI, fecha_nac, telefono, nombre, apellido, email, direccion, contrasena);
 		this->lista_Usuarios.push_back(newUs);
 		res = true;
 	}
@@ -128,7 +128,7 @@ bool Master::añadirAdmin() {
 
 	if (existe == false) {
 		Usuario newUs(DNI, fecha_nac, telefono, nombre, apellido, email, direccion, contraseña);
-		Administrador newAd(newUs);
+		Administrador newAd(newUs);  //De nuevo un administrador hecho a partir de un usuario
 		this->lista_Administradores.push_back(newAd);
 		res = true;
 	}
@@ -153,7 +153,7 @@ void Master::iniciarSesion(Master master) {
 	for (Administrador a : this->lista_Administradores) {
 		if (a.getEmail() == email) {
 			existe = true;
-			if (a.getContraseña() == contraseña) {
+			if (a.getContrasena() == contraseña) {
 				cout << "Bienvenido" << endl;
 				this->setAdministrador(a); //Si eliminamos este atributo del master esta funcion tendra que devolver un usuario o administrador
 				a.menu(master);
@@ -168,7 +168,7 @@ void Master::iniciarSesion(Master master) {
 	for (Usuario o : this->lista_Usuarios) {
 		if (o.getEmail() == email) {
 			existe = true;
-			if (o.getContraseña() == contraseña) {
+			if (o.getContrasena() == contraseña) {
 				cout << "Bienvenido" << endl;
 				this->setUsuario(o);
 				o.menu(master);
@@ -206,13 +206,13 @@ void Master::menuInicio() {
 	cin >> eleccion;
 
 	switch (eleccion) {
-	case 1: 
+	case 1:
 		this->iniciarSesion();
 		break;
 
-	case 2: 
+	case 2:
 		bool bandera;
-		bandera= this->añadirUsuario();
+		bandera = this->añadirUsuario();
 		if (bandera == true) {
 			cout << "Usuario registrado con exito, por favor inicie sesión" << endl;
 		}
@@ -222,10 +222,10 @@ void Master::menuInicio() {
 		menuInicio();
 		break;
 
-	case 3: 
+	case 3:
 		//Cerrar el programa , reescribir backups default
 
-	default: 
+	default:
 		cout << "La opcion escogida no es valida, por favor vuelva a introducir un numero con su eleccion" << endl;
 		cin >> eleccion;
 	}

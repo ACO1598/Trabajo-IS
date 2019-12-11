@@ -26,8 +26,8 @@ public:
 	list<Usuario> getListaUsuario();              //Quito los const por ahora
 	list<Administrador> getListaAdministrador();
 	void setListaVideojuegos(list<Videojuego> listaVideojuegos);
-	inline void setUsuario(Usuario us) { this->u = *us; };
-	inline void setAdministrador(Administrador ad) {this->a = *ad};
+	inline void setUsuario(Usuario us) { this->u = us; };
+	inline void setAdministrador(Administrador ad) { this->a = ad };
 
 	void setListaUsuarios(const list<Usuario>& lu);
 	void setListaAdministradores(const list<Administrador>& la);

@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 	cout << "!!!Proyecto en desarrollo, por favor este atento a nuestras RRSS!!!" << endl; // prints !!!Hello World!!!
-	
+
 	Master master;
 	master.primerInicio();
 	master.menuInicio();

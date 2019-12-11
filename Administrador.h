@@ -22,9 +22,9 @@ public:
 	void eliminarVideojuego(Master m);
 	void eliminarUsuario(Master m);
 	void mostrarListaDeUsuarios(Master m);
-	void mostrarUsuario(Usuario u);
 	void darPrivilegiosAdmin(Master m);
 	Usuario buscarUsuario(Master m);
+	void darseDeBaja(Master m);
 
 
 

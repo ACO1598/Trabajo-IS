@@ -159,3 +159,25 @@ void Administrador::eliminarVideojuego(Master m) {
 		}		
 	}
 }
+
+void Administrador::darseDeBaja(Master m) {
+	int id = getID();
+	bool enc = false;
+	list<Administrador> administradores = m.getListaAdministrador();
+	list<Administrador>::iterator it = administradores.begin();
+	while (it != administradores.end() && enc == false) {
+		if ((*it).getID() == id) {
+			administradores.erase(it);
+			enc = true;
+		}
+		it++;
+	}
+	if (enc == false) {
+		cout << "Usted no se encuentra registrado en la base de datos, por favor vuelva a iniciar sesion" << endl;
+		//Salir()
+	}
+	else {
+		cout << "Administrador eliminado" << endl;
+		m.setListaAdministradores(administradores);
+	}
+}

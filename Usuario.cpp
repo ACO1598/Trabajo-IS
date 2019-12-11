@@ -133,6 +133,28 @@ void Usuario::mostrarListaDeVideojuegos(Master m) {
 	}
 }
 
+void Usuario::darseDeBaja(Master m) {
+	int id = getID();
+	bool enc = false;
+	list<Usuario> usuarios = m.getListaUsuario();
+	list<Usuario>::iterator it = usuarios.begin();
+	while (it != usuarios.end() && enc==false) {
+		if ((*it).getID() == id) {
+			usuarios.erase(it);
+			enc = true;
+		}
+		it++;
+	}
+	if (enc == false) {
+		cout << "Usted no se encuentra registrado en la base de datos, por favor vuelva a iniciar sesion" << endl;
+		//Salir()
+	}
+	else {
+		cout << "Usuario eliminado" << endl;
+		m.setListaUsuarios(usuarios);
+	}
+}
+
 void Usuario::menu(Master m) {
 
 	cout << "-------------------------------- MENÚ --------------------------------" << endl;
