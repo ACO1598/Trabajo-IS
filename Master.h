@@ -14,8 +14,12 @@ private:
 	list<Videojuego> lista_Videojuegos;
 	list<Usuario> lista_Usuarios;
 	list<Administrador> lista_Administradores;
-	Usuario* u;
-	Administrador* a;
+	//Usuario* u;
+	//Administrador* a;
+	struct usuarioConectado{
+		Usuario usConectado;
+		Administrador adConectado;
+	};
 public:
 	inline Master() { this->u = NULL; this->a = NULL; }
 	inline Master(Usuario* usu) { this->u = usu; }
@@ -27,20 +31,22 @@ public:
 	list<Administrador> getListaAdministrador();
 	void setListaVideojuegos(list<Videojuego> listaVideojuegos);
 	inline void setUsuario(Usuario us) { this->u = us; };
-	inline void setAdministrador(Administrador ad) { this->a = ad };
+	inline void setAdministrador(Administrador ad) {this->a = ad};
 
 	void setListaUsuarios(const list<Usuario>& lu);
 	void setListaAdministradores(const list<Administrador>& la);
 
 	void primerInicio();
 	void reescribirBackup();
+	void guardarBackup();
+	void cargarBackup();
 
 	void cerrarSesion();
 	void cerrarPrograma();
 
-	bool añadirAdmin();
-	bool añadirUsuario();
-	void iniciarSesion(Master master);
+	bool anadirAdmin();
+	bool anadirUsuario();
+	usuarioConectado iniciarSesion();
 	void menuInicio();
 };
 
